@@ -21,11 +21,11 @@ spam_chats = []
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
   await event.reply(
-    "**Salam 👋 Men @DBMBOSSdu terefinden yaradılmış tağ botuyam**, Qrupda ve Kanallarda Hamını tağ ede bilerem 👻\nBas **/help** daha çox melumatı elde ede bilersiniz",
+    "**Salam 👋 Mən @DBMBOSSdu terefindən yaradılmış tağ botuyam**, Qrupda və Kanallarda Hamını tağ ede bilərəm 👻\nToxun **/help** daha çox məlumat əldə edə bilərsiniz",
     link_preview=False,
     buttons=(
       [
-        Button.url('🇦🇿 Qrup', 'https://t.me/Together_Time'),
+        Button.url('🇦🇿 Qrup', 'https://t.me/DBMSOHBET'),
         Button.url('⚜️ Sahib', 'https://t.me/DBMBOSSdu')
       ]
     )
@@ -33,13 +33,13 @@ async def start(event):
 
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Botun menyusuna xoş gelmisiz**\n\nKamandalar: /all\n__Bu komandanı Tağ etmek sebebi ile işlede bilersiniz.__\n`Meselen: /all Sabahınız xeyir!`\n__Bu komandanı kimese yanıt olaraq istifade edin ve yaxud tağ sebebini yazın__."
+  helptext = "**Botun menyusuna xoş gəlmisiniz**\n\nKomandalar: /all\n__Bu komandanı Tağ etmek səbəbi ilə istifadə edə bilərsiniz.__\n`Mesələn: /all Sabahınız xeyir!`\n__Bu komandanı kiməsə yanıt olaraq istifadə edin ve yaxud tağ səbebini yazın__."
   await event.reply(
     helptext,
     link_preview=False,
     buttons=(
       [
-        Button.url('🇦🇿 Qrup', 'https://t.me/Together_Time'),
+        Button.url('🇦🇿 Qrup', 'https://t.me/DBMSOHBET'),
         Button.url('⚜️ Sahib', 'https://t.me/DBMBOSSdu')
       ]
     )
@@ -49,7 +49,7 @@ async def help(event):
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
-    return await event.respond("__Bu kamanda yalnız Qrup ve Kanallarda istifade edile biler!__")
+    return await event.respond("__Bu kamanda yalnız Qrup ve Kanallarda istifadə edilə bilər!__")
   
   is_admin = False
   try:
@@ -71,10 +71,10 @@ async def mentionall(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("__Yalnız adminler tağ ede bilerler!__")
+    return await event.respond("__Yalnız adminlər tağ edə bilərlər!__")
   
   if event.pattern_match.group(1) and event.is_reply:
-    return await event.respond("__Tağ sebebini yaz!__")
+    return await event.respond("__Tağ səbəbini yaz!__")
   elif event.pattern_match.group(1):
     mode = "text_on_cmd"
     msg = event.pattern_match.group(1)
@@ -82,7 +82,7 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = await event.get_reply_message()
     if msg == None:
-        return await event.respond("__Men köhne mesajlara tağ ede bilmerem! (Men qrupa elave edilmemişden evvel gönderilen mesajlar)__")
+        return await event.respond("__Mən köhnə mesajları tağ edə bilmərəm! (Mən qrupa əlavə edilməmişdən əvvəl göndərilən mesajlar)__")
   else:
     return await event.respond("__Hansısa bir mesajı yanıtla ve yaxud tağ sebebini yaz!__")
   
